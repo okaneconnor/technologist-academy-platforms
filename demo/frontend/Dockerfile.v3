@@ -1,0 +1,23 @@
+# Part B: Multi-stage build
+# Stage 1 installs everything, Stage 2 starts clean and copies only what's needed
+# Everything not copied from Stage 1 is discarded from the final image
+FROM node:20-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+# Stage 2: Clean runtime image
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY --from=build /app .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

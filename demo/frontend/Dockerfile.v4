@@ -1,0 +1,23 @@
+# Part C: Production dependencies only
+# Uses npm ci (deterministic from lock file) with --only=production
+# This skips devDependencies like nodemon, jest, eslint — not needed at runtime
+FROM node:20-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci --only=production
+
+COPY . .
+
+# Stage 2: Clean runtime image
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY --from=build /app .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

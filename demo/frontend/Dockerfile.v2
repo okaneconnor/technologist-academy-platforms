@@ -1,0 +1,16 @@
+# Part A: Alpine base image
+# Swaps node:20 (full Debian ~1.1GB) for node:20-alpine (Alpine Linux ~140MB)
+# Alpine is a minimal Linux distribution designed for containers
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

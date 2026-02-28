@@ -1,0 +1,7 @@
+instructor-docs/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars

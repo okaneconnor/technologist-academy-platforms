@@ -1,0 +1,46 @@
+# Part F: All optimisations + non-root user
+# Combines: Alpine base, multi-stage with venv, non-root user
+# This is the final production-ready Dockerfile
+# Note: Python has no equivalent of devDependencies — our requirements.txt
+# already only lists runtime packages, so Part C does not apply here
+FROM python:3.12-alpine AS build
+
+WORKDIR /app
+
+# Create a virtual environment so all installed packages live in one place
+RUN python -m venv /opt/venv
+# Use the venv for all pip installs
+ENV PATH="/opt/venv/bin:$PATH"
+
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Stage 2: Clean runtime image with non-root user
+FROM python:3.12-alpine
+
+# Create a non-root user and group
+# -S = system account (no password, no home directory)
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /app
+
+# Copy the virtual environment from the build stage (contains all dependencies)
+COPY --from=build /opt/venv /opt/venv
+# Copy application source code
+COPY --from=build /app .
+
+# Use the venv at runtime
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Give the non-root user ownership of the app files
+RUN chown -R appuser:appgroup /app
+
+# Switch to non-root user — all commands after this run as appuser
+USER appuser
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

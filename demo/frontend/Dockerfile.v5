@@ -1,0 +1,33 @@
+# Part F: All optimisations + non-root user
+# Combines: Alpine base, multi-stage, production deps only, non-root user
+# This is the final production-ready Dockerfile
+FROM node:20-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci --only=production
+
+COPY . .
+
+# Stage 2: Clean runtime image with non-root user
+FROM node:20-alpine
+
+# Create a non-root user and group
+# -S = system account (no password, no home directory)
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /app
+
+COPY --from=build /app .
+
+# Give the non-root user ownership of the app files
+RUN chown -R appuser:appgroup /app
+
+# Switch to non-root user — all commands after this run as appuser
+USER appuser
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
