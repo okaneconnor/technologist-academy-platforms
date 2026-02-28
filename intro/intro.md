@@ -189,25 +189,30 @@ footer: 'AI-Native Academy 2026 | Platform Engineering'
 - APIs
 
 ---
-## Spotify and their Golden Path
+## HMCTS and their Golden Path
 
-Any Dune fans?
-
----
-
-“His spice-induced visions show him a myriad of possible futures where humanity has become extinct and only one where humanity survives. He names this future ‘The Golden Path’ and resolves to bring it to fruition.”
-
----
-### Perfect Platform Engineering?
-‘opinionated and supported’ path to ‘build something’ (for example, build a backend service, put up a website, create a data pipeline). The Golden Path tutorial is a step-by-step tutorial that walks you through this opinionated and supported path.
-
-How much easier would deploying your application be if the starting point was clicking a button in the UI?
-
-https://engineering.atspotify.com/2020/08/how-we-use-golden-paths-to-solve-fragmentation-in-our-software-ecosystem
+His Majesty’s Courts and Tribunals Service (HMCTS) Platform Operations team built their own Golden Path — a structured, opinionated guide to help engineers learn the platforms and technologies they’ll encounter every day.
 
 ---
 
-![w:108000 h:550](golden-path.png)
+> “To introduce our engineers to some key areas and technologies stack that they most certainly will encounter.”
+
+The Golden Path gives engineers a hands-on walkthrough of real infrastructure — no guessing, no starting from scratch.
+
+---
+
+### What does it cover?
+
+- **Infrastructure**: Kubernetes, Flux, Helm, Hub and Spoke Networks
+- **Security**: Palo Alto Firewalls, Azure Firewall
+- **Cloud services**: Azure Front Door, Application Gateway, DNS
+- **DevOps**: GitHub, Azure DevOps Pipelines
+
+https://hmcts.github.io/goldenpath-platops/
+
+---
+
+![w:1080 h:550](../images/golden-path-hmcts.png)
 
 ---
 
@@ -261,7 +266,7 @@ section h3 { font-size: 1.1rem; }
 
 This will give you an **application available on the internet!**
 
-![w:700 h:450](heroku.png)
+![w:700 h:450](../images/heroku.png)
 
 
 ---
@@ -383,7 +388,7 @@ What do I mean by **"cloud vendors offer the ultimate platform?"**
 
 ## Azure Example
 
-![w:750 h:500](azure.png)
+![w:750 h:500](../images/azure.png)
 
 ---
 

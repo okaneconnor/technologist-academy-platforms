@@ -602,7 +602,7 @@ Scales based on:
 - Automatically managed and patched by Azure
 
 ---
-![w:1080 h:550](image.png)
+![w:1080 h:550](../images/part-2-image.png)
 
 ---
 

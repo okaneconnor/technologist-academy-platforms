@@ -216,7 +216,7 @@ It's made up of two parts:
 ---
 
 ### **The Complete Pipeline**
-![w:450 h:450](ci-cd.png)
+![w:450 h:450](../images/ci-cd.png)
 
 
 ---
@@ -425,7 +425,7 @@ Have a read about "Flux" if you get time!
 ---
 ### **How it looks at scale in practice**
 
-![w:1050 h:450](image.png)
+![w:1050 h:450](../images/part-3-image.png)
 
 
 ---

@@ -1,5 +1,5 @@
 
-<img src="intro/kainos-logo.png" width="100%" alt="Kainos Logo" />
+<img src="images/kainos-logo.png" width="100%" alt="Kainos Logo" />
 
 # AI Academy Platforms 2026
 
